@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import './ItemCounter.css';
+
 interface Props {
   productName: string;
   quantity?: number;
@@ -15,21 +17,14 @@ export const ItemCounter = ({ productName, quantity=1 }: Props) => {
     if (count ===1)return;
     setCount(count - 1);
   };
-  const handleClick = () => {
+ /*  const handleClick = () => {
     console.log(`Click! ${productName}`);
-  };
+  }; */
   return (
-    <section
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 10,
-        marginTop: 15,
-      }}
-    >
-      <span
+    <section className="item-raw" >
+      <span className="item-text"
         style={{
-          width: 150,
+          color: count===1 ?'red':'black',
         }}
       >
         {productName}
