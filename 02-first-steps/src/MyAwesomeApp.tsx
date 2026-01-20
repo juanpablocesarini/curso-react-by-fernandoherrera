@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 const firstName = "Juan Pablo";
 const lastName = " Cesarini";
 const favoritesGames = ["Damas", "Dados", "Burako"];
@@ -7,7 +9,16 @@ const address = {
   conuntry: "mi_país",
 };
 
+const myStyles:CSSProperties = {
+        backgroundColor: isActive ?'red' :'green',
+        borderRadius:10,
+        color: "white",
+        padding: 15,
+        margin:20
+      }
+
 export function MyAwosomeApp() {
+    
   return (
     <>
       <h1>{firstName}</h1>
@@ -16,7 +27,8 @@ export function MyAwosomeApp() {
 
       <h1>{isActive ? "Activo" : "No activo"}</h1>
 
-      <p>{JSON.stringify(address)}</p>
+      <p
+      style={myStyles}>{JSON.stringify(address)}</p>
     </>
   );
 }
