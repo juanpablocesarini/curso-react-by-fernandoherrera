@@ -12,7 +12,7 @@ const itemsInCart: ItemInCart[] = [
 ];
 export function FirstStepApp() {
   return (
-    <>
+    <div data-testid="div-app">
       <h1>Carrito de compras</h1>
       {itemsInCart.map(({productDescription, quantity}) => (
         <ItemCounter key={productDescription} productName={productDescription} quantity={quantity} />
@@ -21,6 +21,6 @@ export function FirstStepApp() {
       {/*          <ItemCounter productName="Producto 1" quantity={5}/>
          <ItemCounter productName="Producto 2" quantity={3}/>
          <ItemCounter productName="Producto 3" quantity={2}/> */}
-    </>
+    </div>
   );
 }
