@@ -2,7 +2,8 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import { FirstStepApp } from "./FirstStepApp";
 import { render, screen } from "@testing-library/react";
 
-const mockItemCounter = vi.fn((props: unknown) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const mockItemCounter = vi.fn((_props: unknown) => {
   return <div data-testid="ItemCounter" />;
 });
 
