@@ -11,63 +11,15 @@ exports[`FirstStepApp > should match snapshot 1`] = `
         <h1>
           Carrito de compras
         </h1>
-        <section
-          class="item-raw"
-        >
-          <span
-            class="item-text"
-            style="color: red;"
-          >
-            Producto A
-          </span>
-          <button>
-             +1
-          </button>
-          <span>
-            1
-          </span>
-          <button>
-            -1
-          </button>
-        </section>
-        <section
-          class="item-raw"
-        >
-          <span
-            class="item-text"
-            style="color: black;"
-          >
-            Producto B
-          </span>
-          <button>
-             +1
-          </button>
-          <span>
-            4
-          </span>
-          <button>
-            -1
-          </button>
-        </section>
-        <section
-          class="item-raw"
-        >
-          <span
-            class="item-text"
-            style="color: black;"
-          >
-            Producto C
-          </span>
-          <button>
-             +1
-          </button>
-          <span>
-            3
-          </span>
-          <button>
-            -1
-          </button>
-        </section>
+        <div
+          data-testid="ItemCounter"
+        />
+        <div
+          data-testid="ItemCounter"
+        />
+        <div
+          data-testid="ItemCounter"
+        />
       </div>
     </div>
   </body>,
@@ -78,63 +30,15 @@ exports[`FirstStepApp > should match snapshot 1`] = `
       <h1>
         Carrito de compras
       </h1>
-      <section
-        class="item-raw"
-      >
-        <span
-          class="item-text"
-          style="color: red;"
-        >
-          Producto A
-        </span>
-        <button>
-           +1
-        </button>
-        <span>
-          1
-        </span>
-        <button>
-          -1
-        </button>
-      </section>
-      <section
-        class="item-raw"
-      >
-        <span
-          class="item-text"
-          style="color: black;"
-        >
-          Producto B
-        </span>
-        <button>
-           +1
-        </button>
-        <span>
-          4
-        </span>
-        <button>
-          -1
-        </button>
-      </section>
-      <section
-        class="item-raw"
-      >
-        <span
-          class="item-text"
-          style="color: black;"
-        >
-          Producto C
-        </span>
-        <button>
-           +1
-        </button>
-        <span>
-          3
-        </span>
-        <button>
-          -1
-        </button>
-      </section>
+      <div
+        data-testid="ItemCounter"
+      />
+      <div
+        data-testid="ItemCounter"
+      />
+      <div
+        data-testid="ItemCounter"
+      />
     </div>
   </div>,
   "debug": [Function],
