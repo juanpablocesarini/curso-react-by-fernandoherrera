@@ -7,9 +7,10 @@ interface Props {
 
 export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
   const [query, setQuery] = useState("");
+  
 
   useEffect(() => {
-    const timeOutId=setTimeout(() => {
+    const timeOutId = setTimeout(() => {
       onQuery(query);
     }, 700);
 
@@ -18,7 +19,9 @@ export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
     };
   }, [query, onQuery]);
 
+ 
   const handleSearch = () => {
+  
     onQuery(query);
 
     setQuery("");
