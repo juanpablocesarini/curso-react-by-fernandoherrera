@@ -7,9 +7,13 @@ import { SearchBar } from "./shared/components/SearchBar";
 
 export const GifsApp = () => {
 
-  const [previousTerms, setpreviousTerms] = useState(['cinco']);
+  const [previousTerms, setPreviousTerms] = useState(['cinco']);
   const handleTermClicked = (term:string)=>{
     console.log({term})
+  }
+
+  const handleSearch = (query:string)=>{
+    console.log({query});
   }
   return (
     <>
@@ -19,7 +23,8 @@ export const GifsApp = () => {
         description="Descubre y comparte el Gif perfecto"
       />
       {/* Search */}
-      <SearchBar placeholder="Buscar Gifs" />
+      <SearchBar placeholder="Buscar Gifs"
+      onQuery={handleSearch} />
       {/* Búsquedas previas */}
       <PreviousSearches searches={previousTerms} onLabelClicked={handleTermClicked} />
 
