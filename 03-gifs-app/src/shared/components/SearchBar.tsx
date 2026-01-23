@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   placeholder?: string;
@@ -8,19 +8,29 @@ interface Props {
 export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
   const [query, setQuery] = useState("");
 
+  useEffect(() => {
+    const timeOutId=setTimeout(() => {
+      onQuery(query);
+    }, 700);
+
+    return () => {
+      clearTimeout(timeOutId);
+    };
+  }, [query, onQuery]);
+
   const handleSearch = () => {
     onQuery(query);
-    setQuery('')
+
+    setQuery("");
   };
 
-  const handleKeyDown = (e:React.KeyboardEvent<HTMLInputElement>)=>{
-    if (e.key==='Enter'){
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
       handleSearch();
     }
-  }
+  };
   return (
     <div className="search-container">
-      
       <input
         type="text"
         placeholder={placeholder}
