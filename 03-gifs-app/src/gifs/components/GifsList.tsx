@@ -6,7 +6,8 @@ interface Props{
     gifsList:Gif[];
 }
 
-export const GifsList = ({gifsList}:Props) => {
+export const GifsList = ({ gifsList }: Props) => {
+   console.log(gifsList);
   return (
     
       <div className="gifs-container">

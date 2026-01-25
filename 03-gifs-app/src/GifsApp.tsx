@@ -27,6 +27,7 @@ export const GifsApp = () => {
 
       {/* Gifs */}
       <GifsList gifsList={gifs} />
+     
     </>
   );
 };
