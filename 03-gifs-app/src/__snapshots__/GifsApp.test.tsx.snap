@@ -1,6 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+<<<<<<< HEAD
 exports[`GifsApp > should render component propertly 1`] = `
+=======
+exports[`GifsApp > should render component correctly 1`] = `
+>>>>>>> ffdfd4e09123161977687a209324f266b6452f1a
 <div>
   <div
     class="content-center"
