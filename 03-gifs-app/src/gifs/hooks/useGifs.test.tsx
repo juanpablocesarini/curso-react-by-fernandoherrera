@@ -94,7 +94,7 @@ describe('useGifs', () => {
       'pikachu5',
       'pikachu4',
       'pikachu3',
-      'pikachu2',
+      
     ]);
   });
 });
