@@ -7,7 +7,7 @@ const colors = {
 };
 
 //type TrafficLightColor= 'red'|'yellow'|'green';
-type TrafficLightColor = keyof typeof colors;
+type TrafficLightColor = keyof typeof colors; 
 
 export const TrafficLightWithEffect = () => {
   const [light, setLight] = useState<TrafficLightColor>("red");
@@ -23,7 +23,7 @@ export const TrafficLightWithEffect = () => {
     return () => {
       clearInterval(setIntervalId);
     };
-  }, [countDown]);
+  }, [countDown]); 
 
   // Chqange light color effect
 
@@ -46,7 +46,7 @@ export const TrafficLightWithEffect = () => {
       }
       
     
-  }, [countDown, light]);
+  }, [countDown, light]); 
 
   return (
     <div className="min-h-screen bg-linear-to-br from-slate-900 via-gray-900 to-slate-800 flex items-center justify-center p-4">
