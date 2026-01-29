@@ -15,13 +15,17 @@ export type TaskAction =
   | { type: "TOGGLE_TODO"; payload: number }
   | { type: "DELETE_TODO"; payload: number };
 
-export const getTasksInitialState = ():TaskState => {
-    return  {
-        todos:[],
-        compeleted:0,
-        pending:0,
-        length:0
-    }
+export const getTasksInitialState = (): TaskState => {
+  const localStorageState = localStorage.getItem("tasks-state");
+  if (!localStorageState) {
+    return {
+      todos: [],
+      compeleted: 0,
+      pending: 0,
+      length: 0,
+    };
+  }
+  return JSON.parse(localStorageState);
 };
 export const taskReducer = (
   state: TaskState,
