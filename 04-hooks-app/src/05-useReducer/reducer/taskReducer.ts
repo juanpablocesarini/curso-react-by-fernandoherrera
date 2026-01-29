@@ -15,6 +15,14 @@ export type TaskAction =
   | { type: "TOGGLE_TODO"; payload: number }
   | { type: "DELETE_TODO"; payload: number };
 
+export const getTasksInitialState = ():TaskState => {
+    return  {
+        todos:[],
+        compeleted:0,
+        pending:0,
+        length:0
+    }
+};
 export const taskReducer = (
   state: TaskState,
   action: TaskAction,
@@ -34,14 +42,16 @@ export const taskReducer = (
       };
     }
     case "DELETE_TODO": {
-        const currentTodos =state.todos.filter((todo) => todo.id != action.payload);
+      const currentTodos = state.todos.filter(
+        (todo) => todo.id != action.payload,
+      );
 
       return {
         ...state,
         todos: currentTodos,
         length: currentTodos.length,
-        compeleted: currentTodos.filter((todo)=> todo.completed).length,
-        pending: currentTodos.filter((todo)=>!todo.completed).length
+        compeleted: currentTodos.filter((todo) => todo.completed).length,
+        pending: currentTodos.filter((todo) => !todo.completed).length,
       };
     }
     case "TOGGLE_TODO": {
@@ -54,8 +64,8 @@ export const taskReducer = (
       return {
         ...state,
         todos: updatedTodos,
-         compeleted: updatedTodos.filter((todo)=> todo.completed).length,
-        pending: updatedTodos.filter((todo)=>!todo.completed).length
+        compeleted: updatedTodos.filter((todo) => todo.completed).length,
+        pending: updatedTodos.filter((todo) => !todo.completed).length,
       };
     }
     default:
