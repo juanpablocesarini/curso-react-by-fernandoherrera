@@ -22,6 +22,7 @@ export const TasksApp = () => {
   useEffect(()=>{
     localStorage.setItem('tasks-state',JSON.stringify(state))
   },[state])
+
   const addTodo = () => {
     if (inputValue.length === 0) return;
     dispatch({type: 'ADD_TODO', payload:inputValue});
@@ -60,7 +61,7 @@ export const TasksApp = () => {
     }
   };
 
-  const {todos,compeleted:completedCount,length:totalCount}=state;
+  const {todos,completed:completedCount,length:totalCount}=state;
   //const completedCount = todos.filter((todo) => todo.completed).length;
   //const totalCount = todos.length;
 

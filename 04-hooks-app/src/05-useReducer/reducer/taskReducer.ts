@@ -1,3 +1,4 @@
+import * as z from "zod";
 interface Todo {
   id: number;
   text: string;
@@ -6,7 +7,7 @@ interface Todo {
 interface TaskState {
   todos: Todo[];
   length: number;
-  compeleted: number;
+  completed: number;
   pending: number;
 }
 
@@ -15,18 +16,46 @@ export type TaskAction =
   | { type: "TOGGLE_TODO"; payload: number }
   | { type: "DELETE_TODO"; payload: number };
 
+const TodoSchema = z.object({
+  id: z.number(),
+  text: z.string(),
+  completed: z.boolean(),
+});
+
+const TaskStateShema = z.object({
+  todos: z.array(TodoSchema),
+  length: z.number(),
+  completed: z.number(),
+  pending: z.number(),
+});
+
 export const getTasksInitialState = (): TaskState => {
   const localStorageState = localStorage.getItem("tasks-state");
   if (!localStorageState) {
     return {
       todos: [],
-      compeleted: 0,
+      completed: 0,
       pending: 0,
       length: 0,
     };
   }
-  return JSON.parse(localStorageState);
+
+  // Validar mediante zod
+
+  const result = TaskStateShema.safeParse(JSON.parse(localStorageState));
+
+  if (result.error) {
+    console.log(result.error);
+    return {
+      todos: [],
+      completed: 0,
+      pending: 0,
+      length: 0,
+    };
+  }
+  return result.data;
 };
+
 export const taskReducer = (
   state: TaskState,
   action: TaskAction,
@@ -54,7 +83,7 @@ export const taskReducer = (
         ...state,
         todos: currentTodos,
         length: currentTodos.length,
-        compeleted: currentTodos.filter((todo) => todo.completed).length,
+        completed: currentTodos.filter((todo) => todo.completed).length,
         pending: currentTodos.filter((todo) => !todo.completed).length,
       };
     }
@@ -68,7 +97,7 @@ export const taskReducer = (
       return {
         ...state,
         todos: updatedTodos,
-        compeleted: updatedTodos.filter((todo) => todo.completed).length,
+        completed: updatedTodos.filter((todo) => todo.completed).length,
         pending: updatedTodos.filter((todo) => !todo.completed).length,
       };
     }
