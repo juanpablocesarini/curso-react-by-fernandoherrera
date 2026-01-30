@@ -1,4 +1,4 @@
-import { useOptimistic, useState } from 'react';
+import { useOptimistic, useState, useTransition } from "react";
 
 interface Comment {
   id: number;
@@ -6,34 +6,43 @@ interface Comment {
   optimistic?: boolean;
 }
 
+let lastId = 2;
 export const InstagramApp = () => {
+  const [isPending, startTransition] = useTransition();
   const [comments, setComments] = useState<Comment[]>([
-    { id: 1, text: '¡Gran foto!' },
-    { id: 2, text: 'Me encanta 🧡' },
+    { id: 1, text: "¡Gran foto!" },
+    { id: 2, text: "Me encanta 🧡" },
   ]);
 
-  const [optimisticComments,addOptimisticComment] = useOptimistic(comments,
-    
+  const [optimisticComments, addOptimisticComment] = useOptimistic(
+    comments,
     (currentComments, newCommentText: string) => {
+      lastId++;
       return [
-        ...currentComments, {
-          id: new Date().getTime(),
-          text:newCommentText,
-          optimistic:true
-        }
-      ]
-    }
+        ...currentComments,
+        {
+          id: lastId,
+          text: newCommentText,
+          optimistic: true,
+        },
+      ];
+    },
   );
 
-  const handleAddComment = async (formData:FormData) => {
-    const messageText = formData.get('post-message') as string;
-    
-    addOptimisticComment(messageText);
-    // simular la peticion http al servidor
-    await new Promise((resolve)=> setTimeout(resolve,3000))
+  const handleAddComment = async (formData: FormData) => {
+    const messageText = formData.get("post-message") as string;
 
-    setComments(prev => [...prev, {id: new Date().getTime(), text:messageText},])
-    console.log("mensaje grabado");
+    addOptimisticComment(messageText);
+
+    startTransition(async () => {
+      // simular la peticion http al servidor
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
+      setComments((prev) => [
+        ...prev,
+        { id: new Date().getTime(), text: messageText },
+      ]);
+    });
   };
 
   return (
@@ -79,7 +88,7 @@ export const InstagramApp = () => {
         />
         <button
           type="submit"
-          disabled={false}
+          disabled={isPending}
           className="bg-blue-500 text-white p-2 rounded-md w-full"
         >
           Enviar
