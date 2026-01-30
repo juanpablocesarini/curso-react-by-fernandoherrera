@@ -10,8 +10,9 @@ import { createRoot } from "react-dom/client";
 //import { TrafficLight } from './01-useState/TrafficLight'
 //import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect'
 //import { MemoHook } from "./06-memos/MemoHook";
-import { MemoCounter } from "./06-memos/MemoCounter";
+//import { MemoCounter } from "./06-memos/MemoCounter";
 import "./index.css";
+import { InstagramApp } from "./07-useOptimistic/InstagramApp";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")!).render(
     {/* <TasksApp/> */}
     {/* <ScrambleWords/> */}
     {/* <MemoHook /> */}
-    <MemoCounter/>
+    {/* <MemoCounter/> */}
+    <InstagramApp />
   </StrictMode>,
 );
