@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface Props {
     subtitle:string;
 }
 
-export const MySubtitle = ({subtitle}:Props) => {
+export const MySubtitle = memo(({subtitle}:Props) => {
    console.log("MySubtitle re render")
     return (
     <>
@@ -10,4 +12,4 @@ export const MySubtitle = ({subtitle}:Props) => {
         <button className="bg-pink-700 text-white px-4 py-2 rounded-md cursor-pointer">LLamar a funcion</button>
     </>
   )
-}
+});
