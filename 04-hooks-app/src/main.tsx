@@ -1,5 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { Toaster } from 'sonner'
+
+
 
 //import { ScrambleWords } from './05-useReducer/ScrambleWords'
 //import { TasksApp } from './05-useReducer/TaskApp'
@@ -16,6 +19,7 @@ import { InstagramApp } from "./07-useOptimistic/InstagramApp";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Toaster />
     {/* < HookApp/> */}
     {/* <TrafficLight/> */}
     {/* <TrafficLightWithEffect/> */}

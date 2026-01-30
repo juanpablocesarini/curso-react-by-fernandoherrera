@@ -1,4 +1,7 @@
 import { useOptimistic, useState, useTransition } from "react";
+import { toast } from 'sonner'
+
+
 
 interface Comment {
   id: number;
@@ -38,10 +41,24 @@ export const InstagramApp = () => {
       // simular la peticion http al servidor
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      setComments((prev) => [
+      /* setComments((prev) => [
         ...prev,
         { id: new Date().getTime(), text: messageText },
-      ]);
+      ]); */
+
+      //! Este sería el código para revertir el proceso
+
+      setComments(prev => prev);
+      toast('Error al agregar comentatio',{
+        description:'Intente Nuevamente',
+        duration: 10_000,
+        position: 'top-right',
+        action: {
+          label:'Cerrar',
+          onClick: () => toast.dismiss(),
+        }
+      })
+
     });
   };
 
