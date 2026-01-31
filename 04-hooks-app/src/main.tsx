@@ -1,4 +1,4 @@
-import { StrictMode, Suspense } from "react";
+import { StrictMode,  } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "sonner";
 
@@ -12,10 +12,11 @@ import { Toaster } from "sonner";
 //import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect'
 //import { MemoHook } from "./06-memos/MemoHook";
 //import { MemoCounter } from "./06-memos/MemoCounter";
-import "./index.css";
-import { ClientInformation } from "./08-use-suspense/ClientInformation";
-import { getUserAction } from "./08-use-suspense/api/get-user.action";
+//import { ClientInformation } from "./08-use-suspense/ClientInformation";
+//import { getUserAction } from "./08-use-suspense/api/get-user.action";
 //import { InstagramApp } from "./07-useOptimistic/InstagramApp";
+import "./index.css";
+import { ProfessionalApp } from "./09-useContext/ProfessionalApp";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -31,7 +32,7 @@ createRoot(document.getElementById("root")!).render(
     {/* <MemoHook /> */}
     {/* <MemoCounter/> */}
     {/* <InstagramApp /> */}
-    <Suspense
+ {/*    <Suspense
       fallback={
         <div className="bg-gradient flex flex-col">
           <h1 className="text-2xl">Cargando...</h1>
@@ -39,6 +40,7 @@ createRoot(document.getElementById("root")!).render(
       }
     >
       <ClientInformation getUser={getUserAction(500)}/>
-    </Suspense>
+    </Suspense> */}
+    <ProfessionalApp/>
   </StrictMode>,
 );
