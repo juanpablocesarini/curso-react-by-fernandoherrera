@@ -4,11 +4,14 @@ import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
-import { HeroStats } from "../components/HeroStats";
-import { HeroGrid } from "../components/HeroGrid";
+
+
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
-import { getHeroesByPageAction } from "../actions/get-heroes-by-page.action";
+
+import { HeroStats } from "@/heroes/components/HeroStats";
+import { HeroGrid } from "@/heroes/components/HeroGrid";
+import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
 
 
 
