@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -7,11 +7,19 @@ import { HeroStats } from "../components/HeroStats";
 import { HeroGrid } from "../components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
+import { getHeroesByPage } from "../actions/get-heroes-by-page.action";
+
 
 export const HomePage = () => {
   const [activeTab, setActiveTab] = useState<
     "all" | "favorites" | "heroes" | "villains"
   >("all");
+
+  useEffect(()=>{
+    getHeroesByPage().then((heroes)=>{
+      console.log({heroes});
+    })
+  },[])
   return (
     <>
       <>
