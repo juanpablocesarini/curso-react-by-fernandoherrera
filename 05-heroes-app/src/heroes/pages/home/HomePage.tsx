@@ -17,14 +17,17 @@ export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeTab = searchParams.get("tab") ?? "all";
 
+  const page = searchParams.get("page") ?? "1";
+  const limit = searchParams.get("limit") ?? "6";
+
  const selectedTab= useMemo(()=>{
     const validTabs =['all','favorites','herores','villains'];
     return validTabs.includes(activeTab)?activeTab:'all';
  },[activeTab])
 
   const { data: heroesResponse } = useQuery({
-    queryKey: ["heroes"],
-    queryFn: () => getHeroesByPageAction(),
+    queryKey: ["heroes",{page,limit}],
+    queryFn: () => getHeroesByPageAction(+page,+limit),
     staleTime: 1000 * 60 * 5, //5 minutos
   });
   console.log({ heroesResponse });
@@ -115,7 +118,7 @@ export const HomePage = () => {
           </TabsContent>
         </Tabs>
 
-        <CustomPagination totalPages={8} />
+        <CustomPagination totalPages={heroesResponse?.pages??1} />
       </>
     </>
   );
