@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { use, useMemo } from "react";
 import { useSearchParams } from "react-router";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -11,6 +11,7 @@ import { HeroGrid } from "@/heroes/components/HeroGrid";
 
 import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 import { useHeroPaginate } from "@/heroes/hooks/useHeroPaginate";
+import { FavoriteHeroContext } from "@/heroes/context/FavoriteHeroContext";
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +28,7 @@ export const HomePage = () => {
 
   const { data: heroesResponse } = useHeroPaginate(+page, +limit, category);
   const { data: summary } = useHeroSummary();
+  const { favoriteCount, favorites } = use(FavoriteHeroContext);
   return (
     <>
       <>
@@ -70,7 +72,7 @@ export const HomePage = () => {
               }
               className="flex items-center gap-2"
             >
-              Favorites (3)
+              Favorites ({favoriteCount})
             </TabsTrigger>
             <TabsTrigger
               value="heroes"
@@ -104,12 +106,11 @@ export const HomePage = () => {
             <HeroGrid heroes={heroesResponse?.heroes ?? []} />
           </TabsContent>
           <TabsContent value={"favorites"}>
-            <h1>Favoritos</h1>
+            <HeroGrid heroes={favorites} />
             {/* Character Grid */}
             <HeroGrid heroes={[]} />
           </TabsContent>
           <TabsContent value={"heroes"}>
-            <h1>Herores</h1>
             {/* Character Grid */}
             <HeroGrid heroes={heroesResponse?.heroes ?? []} />
           </TabsContent>
@@ -118,8 +119,9 @@ export const HomePage = () => {
             <HeroGrid heroes={heroesResponse?.heroes ?? []} />
           </TabsContent>
         </Tabs>
-
-        <CustomPagination totalPages={heroesResponse?.pages ?? 1} />
+        {selectedTab != "favorites" && (
+          <CustomPagination totalPages={heroesResponse?.pages ?? 1} />
+        )}
       </>
     </>
   );
