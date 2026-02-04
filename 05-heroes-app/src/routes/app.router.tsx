@@ -18,7 +18,7 @@ export const appRouter = createBrowserRouter([
     element: <HeroesLayout />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "heroes/:isSlug", element: <HeroPage /> },
+      { path: "heroes/:idSlug", element: <HeroPage /> },
       { path: "search", element: <SearchPage /> },
       { path: "*", element: <Navigate to='/' /> },
     ],
