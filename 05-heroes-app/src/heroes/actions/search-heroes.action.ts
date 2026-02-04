@@ -8,12 +8,12 @@ interface Options {
   categry?: string;
   universe?: string;
   status?: string;
-  strangth?: string;
+  strength?: string;
 }
 export const serchHeroesAction = async (options: Options) => {
-  const { categry, name, status, strangth, team, universe } = options;
+  const { categry, name, status, strength, team, universe } = options;
 
-  if (!categry && !name && !status && !strangth && !team && !universe) {
+  if (!categry && !name && !status && !strength && !team && !universe) {
     return [];
   }
 
@@ -22,7 +22,7 @@ export const serchHeroesAction = async (options: Options) => {
       categry,
       name,
       status,
-      strangth,
+      strength,
       team,
       universe,
     },
