@@ -15,7 +15,11 @@
       "type": "shell",
       "command": "npm run test",
       "options": {
-        "cwd": "${workspaceFolder}/05-heroes-app"
+        "cwd": "${workspaceFolder}/05-heroes-app",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
       "problemMatcher": []
     },
@@ -24,7 +28,11 @@
       "type": "shell",
       "command": "npm install",
       "options": {
-        "cwd": "${workspaceFolder}/05-heroes-app"
+        "cwd": "${workspaceFolder}/05-heroes-app",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
       "problemMatcher": []
     },
@@ -33,7 +41,11 @@
       "type": "shell",
       "command": "PORT=3001 npm run start:dev",
       "options": {
-        "cwd": "${workspaceFolder}/nest-heroes-backend"
+        "cwd": "${workspaceFolder}/nest-heroes-backend",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
       "problemMatcher": []
     },
@@ -42,7 +54,11 @@
       "type": "shell",
       "command": "npm install",
       "options": {
-        "cwd": "${workspaceFolder}/nest-heroes-backend"
+        "cwd": "${workspaceFolder}/nest-heroes-backend",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
       "problemMatcher": []
     },
@@ -51,8 +67,13 @@
       "type": "shell",
       "command": "rm -rf node_modules && npm install",
       "options": {
-        "cwd": "${workspaceFolder}/05-heroes-app"
+        "cwd": "${workspaceFolder}/05-heroes-app",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
+      
       "problemMatcher": []
     },
     {
@@ -60,7 +81,11 @@
       "type": "shell",
       "command": "rm -rf node_modules && npm install",
       "options": {
-        "cwd": "${workspaceFolder}/nest-heroes-backend"
+        "cwd": "${workspaceFolder}/nest-heroes-backend",
+        "shell": {
+          "executable": "C:\\Program Files\\Git\\bin\\bash.exe",
+          "args": ["-lc"]
+        }
       },
       "problemMatcher": []
     },
