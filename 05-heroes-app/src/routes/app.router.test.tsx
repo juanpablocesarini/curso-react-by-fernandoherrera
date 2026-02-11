@@ -60,4 +60,14 @@ describe("appRouter", () => {
 
     
   })
+
+    test('should redirect to home page for unknown routes',  ()=>{
+    const router = createMemoryRouter(appRouter.routes, {
+      initialEntries: ["/pagina-X"],
+    });
+    render(<RouterProvider router={router} />);
+    expect(screen.getByTestId('home-page')).toBeDefined();
+
+    
+  })
 });
