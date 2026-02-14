@@ -17,6 +17,10 @@ beforeEach(()=>{
 })
 vi.mock("@/heroes/actions/search-heroes.action");
 
+vi.mock('./ui/SearchControls',()=>({
+  SearchControls: () => <div data-testid='search-controls'></div>
+}));
+
 vi.mock("@/components/custom/CustomJumbotron", () => ({
   CustomJumbotron: () => <div data-testid="custom-jusmbotron"></div>,
 }));
