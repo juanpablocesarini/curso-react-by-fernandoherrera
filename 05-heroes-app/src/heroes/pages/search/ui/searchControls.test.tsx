@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { describe, expect, test } from "vitest";
 import { SearchControls } from "./SearchControls";
-import { aC } from "node_modules/react-router/dist/development/router-5iOvts3c.d.mts";
+
 
 if (typeof window.ResizeObserver === "undefined") {
   class ResizeObserver {
