@@ -2,34 +2,40 @@ import React from 'react';
 import { 
   Home, 
   Users, 
-  BarChart3, 
   Settings, 
   FileText, 
-  ShoppingCart, 
   Bell, 
   HelpCircle,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Package,
+  ShoppingBag
 } from 'lucide-react';
 import { CustomLogo } from '@/components/custom/CustomLogo';
+import { Link, useLocation } from 'react-router';
 
 interface SidebarProps {
   isCollapsed: boolean;
   onToggle: () => void;
 }
-
+const {pathname}=useLocation();
 export const AdminSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
-  const menuItems = [
-    { icon: Home, label: 'Dashboard', active: true },
-    { icon: BarChart3, label: 'Analytics' },
-    { icon: Users, label: 'Users' },
-    { icon: ShoppingCart, label: 'Orders' },
-    { icon: FileText, label: 'Reports' },
-    { icon: Bell, label: 'Notifications' },
-    { icon: Settings, label: 'Settings' },
-    { icon: HelpCircle, label: 'Help' },
-  ];
+ const menuItems = [
+    { icon: Home,         label: 'Dashboard',      to: '/admin' },
+    { icon: Package,      label: 'Productos',      to: '/admin/products' },
+    { icon: Users,        label: 'Clientes',       to: '' },
+    { icon: ShoppingBag,  label: 'Órdenes',        to: '' },
+    { icon: FileText,     label: 'Reportes',       to: '' },
+    { icon: Bell,         label: 'Notificaciones', to: '' },
+    { icon: Settings,     label: 'Ajustes',        to: '' },
+    { icon: HelpCircle,   label: 'Ayuda',          to: '' },
+];
 
+const isActiveRoute = (to:string)=>{
+  // TODO: ajustarlo cuando estemos en la pantalla de producto
+
+  return pathname===to;
+}
   return (
     <div className={`bg-white border-r border-gray-200 transition-all duration-300 ease-in-out h-18 ${
       isCollapsed ? 'w-18' : 'w-64'
@@ -52,10 +58,10 @@ export const AdminSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) 
             const Icon = item.icon;
             return (
               <li key={index}>
-                <a
-                  href="#"
+                <Link
+                  to={item.to || '/admin'}
                   className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-all duration-200 group ${
-                    item.active
+                    isActiveRoute(item.to || '/admin')
                       ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
@@ -64,7 +70,7 @@ export const AdminSidebar: React.FC<SidebarProps> = ({ isCollapsed, onToggle }) 
                   {!isCollapsed && (
                     <span className="font-medium">{item.label}</span>
                   )}
-                </a>
+                </Link>
               </li>
             );
           })}
